@@ -6,7 +6,7 @@ const destPath = path.join(__dirname, 'project-dist', 'bundle.css');
 
 const handleError = (err) => console.error('\n======== ERROR \n', err);
 
-const mergeCSS = async () => {
+const mergeCSS = async (srcPath, destPath) => {
   const files = await fsPromises
     .readdir(srcPath, { withFileTypes: true })
     .then((data) =>
@@ -38,4 +38,7 @@ const mergeCSS = async () => {
   }
 };
 
-mergeCSS().catch(handleError);
+mergeCSS(srcPath, destPath).catch(handleError);
+
+module.exports.mergeCSS = mergeCSS;
+module.exports.handleError = handleError;

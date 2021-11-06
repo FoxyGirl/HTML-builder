@@ -31,4 +31,6 @@ const copyDir = async (src, dest) => {
   }
 };
 
-copyDir(srcPath, destPath);
+copyDir(srcPath, destPath).catch(handleError);
+
+module.exports.copyDir = copyDir;
